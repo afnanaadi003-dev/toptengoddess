@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goddesses of Indian Cinema | Glassmorphic Feature by Amim Ahsan</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+              300: '#FCD34D'
+            },
+            glass: {
+              bg: 'rgba(15, 23, 42, 0.65)',
+              border: 'rgba(255, 255, 255, 0.12)',
+              card: 'rgba(30, 41, 59, 0.55)',
+              cardHover: 'rgba(51, 65, 85, 0.7)'
+            }
+          },
+          boxShadow: {
+            'glass-glow': '0 8px 32px 0 rgba(192, 132, 252, 0.25)',
+            'gold-glow': '0 0 25px rgba(245, 158, 11, 0.35)',
+            'neon-pink': '0 0 25px rgba(236, 72, 153, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Glassmorphism styles */
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    
+    .glass-card {
+      background: rgba(30, 41, 59, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      background: rgba(51, 65, 85, 0.6);
+      border-color: rgba(245, 158, 11, 0.4);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 158, 11, 0.2);
+    }
+
+    .glass-modal {
+      background: rgba(10, 15, 30, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Animated Gradients */
+    .bg-radial-gradient {
+      background: radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.25) 0%, rgba(236, 72, 153, 0.15) 35%, rgba(15, 23, 42, 1) 80%);
+    }
+
+    .text-gradient-gold {
+      background: linear-gradient(135deg, #FFF5C0 0%, #F59E0B 50%, #B45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-silver {
+      background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.9);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(245, 158, 11, 0.4);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(245, 158, 11, 0.7);
+    }
+
+    /* Floating particles ambient light */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    .floating-bg-orb {
+      animation: float 12s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen relative overflow-x-hidden selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Ambient Glowing Orbs -->
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none floating-bg-orb"></div>
+  <div class="fixed top-1/3 right-10 w-[600px] h-[600px] bg-amber-500/15 rounded-full blur-[160px] pointer-events-none floating-bg-orb" style="animation-delay: -4s;"></div>
+  <div class="fixed bottom-10 left-10 w-[450px] h-[450px] bg-pink-600/15 rounded-full blur-[150px] pointer-events-none floating-bg-orb" style="animation-delay: -7s;"></div>
+
+  <!-- Header & Hero Section -->
+  <header class="relative pt-12 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center z-10">
+    <!-- Divine Creator Badge -->
+    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel border border-amber-500/30 text-amber-300 text-sm font-semibold tracking-widest uppercase mb-6 shadow-gold-glow animate-pulse">
+      <i class="fa-solid fa-crown text-amber-400"></i>
+      <span>God - Feature By Amim Ahsan</span>
+      <i class="fa-solid fa-sparkles text-amber-400"></i>
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4">
+      <span class="text-gradient-gold">10 GODDESSES</span>
+      <br class="hidden sm:inline" />
+      <span class="text-gradient-silver text-3xl sm:text-5xl md:text-6xl">OF INDIAN CINEMA</span>
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg md:text-xl font-light leading-relaxed mb-8">
+      An extraordinary glassmorphic celebration of beauty, unparalleled talent, divine philosophy, screen presence, and cinematic legacy. Explore their deep journeys, key films, and noble thoughts.
+    </p>
+
+    <!-- Search & Filter Controls -->
+    <div class="max-w-2xl mx-auto glass-panel p-3 rounded-2xl flex flex-col sm:flex-row gap-3 shadow-xl">
+      <div class="relative flex-grow">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input type="text" id="searchInput" placeholder="Search goddess by name, movie, or philosophy..." class="w-full bg-slate-900/60 border border-slate-700/60 text-slate-100 placeholder-slate-400 rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-amber-500 transition-colors">
+      </div>
+      <div class="flex gap-2 justify-center">
+        <button onclick="filterCategory('all')" class="filter-btn active-filter px-4 py-3 rounded-xl bg-amber-500 text-slate-950 font-bold text-sm tracking-wide transition-all shadow-md">All</button>
+        <button onclick="filterCategory('Bollywood')" class="filter-btn px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-medium text-sm tracking-wide transition-all">Bollywood</button>
+        <button onclick="filterCategory('Bengali')" class="filter-btn px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-medium text-sm tracking-wide transition-all">Bengali</button>
+        <button onclick="filterCategory('South')" class="filter-btn px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-medium text-sm tracking-wide transition-all">South</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Actresses Grid -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 z-10 relative">
+    <div id="actressGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Grid items dynamically rendered by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Fullscreen Glass Detail Modal -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6">
+    <div class="glass-modal w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl relative border border-slate-700/50 flex flex-col max-h-[92vh]">
+      
+      <!-- Modal Header Bar -->
+      <div class="p-4 sm:p-6 border-b border-slate-800/80 flex justify-between items-center bg-slate-900/60">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-amber-500 animate-ping"></span>
+          <span class="font-cinzel text-xs sm:text-sm tracking-widest text-amber-400 uppercase font-semibold">Goddess Deep-Dive Feature</span>
+        </div>
+        <button onclick="closeModal()" class="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-amber-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all duration-300">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div id="modalContent" class="overflow-y-auto p-4 sm:p-8 flex-1 space-y-8">
+        <!-- Content dynamically injected here -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-900/80 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
+        <span class="font-cinzel">Exclusive Glass Feature</span>
+        <span class="text-amber-400 font-semibold">God - Feature By Amim Ahsan</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer Banner -->
+  <footer class="mt-20 border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-md py-10 px-4 text-center text-slate-400 z-10 relative">
+    <div class="max-w-4xl mx-auto space-y-4">
+      <div class="font-cinzel text-xl text-amber-400 font-bold tracking-widest">
+        GOD - FEATURE BY AMIM AHSAN
+      </div>
+      <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+        Celebrating the timeless charisma, artistic greatness, and philosophical vision of Indian Cinema's top 10 screen goddesses.
+      </p>
+      <div class="flex justify-center gap-6 text-slate-400 text-lg pt-2">
+        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-solid fa-globe"></i></a>
+      </div>
+      <p class="text-xs text-slate-400 pt-4">© 2026 Interactive Cinematic Glass Universe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Application Logic & Data -->
+  <script>
+    // 10 Goddesses Data Matrix
+    const goddesses = [
+      {
+        id: 'sushmita-sen',
+        name: 'Sushmita Sen',
+        category: 'Bollywood',
+        title: 'The Universe Goddess & Regal Trailblazer',
+        origin: 'Miss Universe 1994 / Indian Film Icon',
+        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+        quote: "I don't believe in taking right decisions. I take decisions and then make them right.",
+        shortBio: "First Indian to win Miss Universe (1994), Sushmita Sen redefined Indian cinema and womanhood with her poise, fiery independence, and commanding screen presence.",
+        philosophy: `Sushmita Sen's core philosophy centers on unapologetic self-sovereignty, courage, and unconditional dignity. Having broken conventional societal standards by adopting her first daughter Renee at just 24 as a single woman, she embodies living by one's own internal compass. She views life not as a competitive race, but as a deeply spiritual canvas where grace under pressure is the highest victory. Her worldview asserts that beauty without intellect and empathy is fleeting, but a courageous heart creates an immortal legacy.`,
+        actions: [
+          "Single Motherhood Pioneer: Adopted two daughters (Renee and Alisah) as a single woman in India, fighting legal hurdles to establish precedent.",
+          "Philanthropy & Education: Founder of 'I Am Foundation' supporting girl-child education, cancer treatment, and disaster relief.",
+          "Health & Resilience Advocate: Publicly shared her battle with Addison's disease and heart ailments, inspiring millions with her fitness journey."
+        ],
+        movies: [
+          { name: "Aarya (Web Series)", role: "Aarya Sareen", year: "2020 - 2024", note: "International Emmy nominated powerful lead performance as a crime matriarch." },
+          { name: "Main Hoon Na", role: "Miss Chandni", year: "2004", note: "Iconic romantic heroine opposite Shah Rukh Khan, defined graceful screen style." },
+          { name: "Filhaal...", role: "Sia Sheawat", year: "2002", note: "Acclaimed performance on surrogate motherhood directed by Meghna Gulzar." },
+          { name: "Biwi No.1", role: "Rupali", year: "1999", note: "Won Filmfare Best Supporting Actress Award for her stylish charisma." }
+        ],
+        thoughts: [
+          "Dignity is not negotiable. No status or stardom is worth compromising your inner peace.",
+          "Live your truth loudly enough so that women after you don't have to whisper.",
+          "Age is merely a chronological count; wisdom is the true measure of your spirit's radiance."
+        ]
+      },
+      {
+        id: 'katrina-kaif',
+        name: 'Katrina Kaif',
+        category: 'Bollywood',
+        title: 'The Starlight Empress & Precision Performer',
+        origin: 'Bollywood Super-A-Lister',
+        image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
+        quote: "Hard work, discipline, and constant self-reinvention will always outshine temporary talent.",
+        shortBio: "From an international outsider to one of Bollywood's highest-paid, most beloved superstars, Katrina Kaif stands as a testament to relentless work ethic, iconic dance legacy, and beauty.",
+        philosophy: `Katrina Kaif's philosophy revolves around extreme discipline, resilience, and mastery of focus. Navigating a competitive industry with initial language barriers, she transformed every criticism into fuel for self-improvement. She believes in emotional poise, maintaining privacy in personal matters while giving 100% devotion to her art, dance routines, and entrepreneurial ventures like Kay Beauty. Her philosophy is: true perfection is not inherited; it is sculpted daily through sweat and determination.`,
+        actions: [
+          "Women Entrepreneurship: Launched Kay Beauty, promoting diverse Indian skin tones and body positivity.",
+          "Educate Girls Support: Actively funds school building initiatives in rural India through Claretian Mercy Home.",
+          "Action & Dance Vanguard: Set unprecedented standards in high-octane dance numbers ('Kamli', 'Sheila Ki Jawani') and action stunts in Tiger franchise."
+        ],
+        movies: [
+          { name: "Tiger Zinda Hai", role: "Zoya", year: "2017", note: "Broke box office records as a lethal intelligence agent executing her own stunts." },
+          { name: "Zero", role: "Babita Kumari", year: "2018", note: "Critically praised intense raw performance portraying an emotionally vulnerable actress." },
+          { name: "Namastey London", role: "Jasmeet 'Jazz' Malhotra", year: "2007", note: "Career-defining role establishing her as the ultimate lead in romantic cinema." },
+          { name: "Zindagi Na Milegi Dobara", role: "Laila", year: "2011", note: "Symbolized free-spirited living, motorcycling, and deep emotional wisdom." }
+        ],
+        thoughts: [
+          "Focus on what you can control: your discipline, your preparation, and your kindness.",
+          "Never let success enter your head, and never let failure touch your heart.",
+          "Beauty is being comfortable and confident in your own skin."
+        ]
+      },
+      {
+        id: 'arpita-chatterjee',
+        name: 'Arpita Chatterjee',
+        category: 'Bengali',
+        title: 'The Bengal Virtuoso & Graceful Muse',
+        origin: 'Bengali Cinema / National Acclaim',
+        image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80',
+        quote: "Art must reflect the subtle depths of human silence, not just the volume of words.",
+        shortBio: "Renowned for her ethereal beauty and soulful dramatic depth, Arpita Chatterjee is a powerhouse in Bengali cinema, seamlessly balancing classic dramatic art with modern cinema.",
+        philosophy: `Arpita Chatterjee embodies artistic authenticity, restraint, and intellectual depth. Rather than chasing fleeting commercial buzz, she chooses roles that explore complex human psychology and womanhood. Her philosophy values artistic dignity over fame, believing that a true artist must mature like fine wine—nurturing literature, music, and quiet reflection. She advocates for artistic independence and balance between personal life and intense creative performance.`,
+        actions: [
+          "Independent Art House Patron: Championed non-commercial Bengal parallel cinema focused on social realism.",
+          "Cultural Preservation: Actively works on preserving classical Bengali theatre and literary storytelling.",
+          "Mental Health Advocacy: Organizes awareness drives highlighting artists' psychological wellbeing."
+        ],
+        movies: [
+          { name: "Utsab", role: "Shambhavi", year: "2000", note: "Directed by Rituparno Ghosh; landmark ensemble film exploring family dynamics." },
+          { name: "Abyakto", role: "Saathi", year: "2020", note: "Deeply emotional role as a mother carrying unexpressed grief, widely critically acclaimed." },
+          { name: "Bohomaan", role: "Joyita", year: "2019", note: "Poignant drama depicting complex romantic nostalgia and modern relationships." },
+          { name: "Dutta Vs Dutta", role: "China", year: "2012", note: "Anjan Dutt masterpiece exploring 1970s Calcutta cultural shifts." }
+        ],
+        thoughts: [
+          "Subtlety in performance carries far more impact than theatrical loud noise.",
+          "Every Bengali character I portray carries the quiet strength of generations of women.",
+          "True elegance is remaining rooted in your culture while expanding your creative horizon."
+        ]
+      },
+      {
+        id: 'srabanti-chatterjee',
+        name: 'Srabanti Chatterjee',
+        category: 'Bengali',
+        title: 'The Charismatic Enchantress of Bengal',
+        origin: 'Tollywood Box Office Goddess',
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+        quote: "Smiles are my armor. No matter how tough the storm, love and screen energy win.",
+        shortBio: "Starting as a child artist and rising to the undisputed queen of mainstream Bengali cinema, Srabanti Chatterjee captivates audiences with her luminous smile and expressive eyes.",
+        philosophy: `Srabanti's philosophy is anchored in resilience, warmth, and unfiltered joy. Having faced public scrutiny throughout her personal life, she maintains an unshakeable optimism and commitment to her audience. She views cinema as an emotional medicine meant to spread cheer, romance, and comfort. Her spirit emphasizes rising from every setback with a brighter smile and dedicating oneself completely to the audience that loves her.`,
+        actions: [
+          "Mainstream Cinema Pillar: Maintained box office consistency for over two decades in Tollywood.",
+          "Youth & Child Empowerment: Works with regional NGOs supporting underprivileged children.",
+          "Women Independence Advocate: Publicly speaks against cyberbullying and female independence in Bengal."
+        ],
+        movies: [
+          { name: "Champion", role: "Kavita", year: "2003", note: "Breakthrough romantic hit that made her an instant household name." },
+          { name: "Sedin Dekha Hoyechilo", role: "Nandini", year: "2010", note: "Blockbuster romantic drama alongside Dev, setting high box office records." },
+          { name: "Wanted", role: "Pooja", year: "2010", note: "High-octane action-romance highlight in commercial Bengali film history." },
+          { name: "Aparajito", role: "Subhra", year: "2022", note: "Acclaimed participation in tribute projects honoring Ray's legacy." }
+        ],
+        thoughts: [
+          "The camera detects genuine warmth instantly; you cannot fake love for your audience.",
+          "Life will test your patience, but your joy must remain unassailable.",
+          "A woman's greatest strength is her ability to rebuild her world with grace."
+        ]
+      },
+      {
+        id: 'raima-sen',
+        name: 'Raima Sen',
+        category: 'Bengali',
+        title: 'The Mystical Royal & Cinema Aristocrat',
+        origin: 'Bengali & Hindi Parallel Cinema',
+        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+        quote: "Heritage gives you roots, but artistic choices define your personal soul.",
+        shortBio: "Granddaughter of the legendary Suchitra Sen and daughter of Moon Moon Sen, Raima Sen carved her own distinctive niche as the queen of indie sensitivity and expressive gaze.",
+        philosophy: `Raima Sen's philosophy focuses on artistic freedom, authenticity, and quiet confidence. Living under the shadow of a legendary film lineage, she chose her own path—embracing complex, non-formulaic art house cinema over mindless glamor. She believes that true artistic elegance requires mystery, subtlety, and staying true to one's aesthetic instincts rather than conforming to commercial pop trends.`,
+        actions: [
+          "Indie Cinema Catalyst: Paved the way for nuanced, non-commercial female characters across Hindi and Bengali cinema.",
+          "Animal Welfare: Dedicated supporter of stray animal rescue and adoption initiatives.",
+          "Cultural Heritage Advocate: Promotes Indian handloom textiles and vintage cinematic restoration."
+        ],
+        movies: [
+          { name: "Chokher Bali", role: "Ashalata", year: "2003", note: "Rituparno Ghosh masterpiece based on Tagore's novel; garnered international acclaim." },
+          { name: "Parineeta", role: "Koel", year: "2005", note: "Highly praised role in iconic Bollywood adaptation of Sarat Chandra Chattopadhyay." },
+          { name: "Noukadubi", role: "Hemnalini", year: "2011", note: "Mesmerizing Tagore adaptation highlighting period romance and tragic beauty." },
+          { name: "The Bastard Child", role: "Nargis", year: "2013", note: "Hard-hitting historical role depicting 1971 Bangladesh Liberation War experiences." }
+        ],
+        thoughts: [
+          "Eyes can communicate silence better than pages of dramatic dialogue.",
+          "Legacy is an honor, but your own authenticity is your true identity.",
+          "Simplicity on screen demands the highest level of inner emotional truth."
+        ]
+      },
+      {
+        id: 'tanushree-dutta',
+        name: 'Tanushree Dutta',
+        category: 'Bollywood',
+        title: 'The Brave Voice & Fearless Luminary',
+        origin: 'Femina Miss India Universe 2004',
+        image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+        quote: "Truth may be isolated for a season, but its eventual resonance reshapes history.",
+        shortBio: "Miss India Universe 2004 and Bollywood star who became a historic catalyst for systemic reform, transparency, and female safety in the Indian entertainment industry.",
+        philosophy: `Tanushree Dutta's philosophy is rooted in spiritual truth, unyielding courage, and revolutionary integrity. After stepping back from mainstream glamour, she embarked on an intense spiritual self-discovery journey across ashrams and solitary retreats. She views truth as non-negotiable, believing that standing up for righteousness—even at immense personal and career sacrifice—is the ultimate moral imperative for any human spirit.`,
+        actions: [
+          "Historic Catalyst: Ignited the #MeToo movement in India, demanding accountability and workplace safety for women.",
+          "Spiritual & Mental Health Writer: Shares essays on trauma recovery, mindfulness, and inner awakening.",
+          "Women Rights Pioneer: Speaks at global summits on harassment prevention and systemic institutional reform."
+        ],
+        movies: [
+          { name: "Aashiq Banaya Aapne", role: "Sneha", year: "2005", note: "Sensational debut film that catapulted her into nationwide stardom." },
+          { name: "Chocolate: Deep Dark Secrets", role: "Simran", year: "2005", note: "Stylish crime thriller featuring her dynamic screen presence." },
+          { name: "Dhol", role: "Ritu Tripathi", year: "2007", note: "Classic Priyadarshan comedy hit showing her vibrant comedic timing." },
+          { name: "Risk", role: "Shraddha", year: "2007", note: "Intense crime drama highlighting versatile dramatic capabilities." }
+        ],
+        thoughts: [
+          "When you stand for truth, you stand with the universe, even if you stand alone.",
+          "Glamour is temporary; your moral integrity defines your eternal legacy.",
+          "Courage is not the absence of fear, but the decision that something else is more important."
+        ]
+      },
+      {
+        id: 'shilpa-shetty',
+        name: 'Shilpa Shetty',
+        category: 'Bollywood',
+        title: 'The Ageless Siren & Wellness Icon',
+        origin: 'Bollywood Legend / Global TV Icon',
+        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+        quote: "Mindful living, holistic yoga, and constant positivity keep the soul forever young.",
+        shortBio: "With three decades in Indian cinema, iconic dance numbers, international Big Brother victory, and a wellness empire, Shilpa Shetty Kundra is the ultimate avatar of vitality.",
+        philosophy: `Shilpa Shetty's philosophy synthesizes ancient Indian yoga wisdom with dynamic modern entrepreneurship. She advocates for holistic fitness, mental equilibrium, and absolute positivity under pressure. Having navigated international media storms during Celebrity Big Brother with grace and dignity, she demonstrates that kindness, self-respect, and healthy living are the greatest tools for enduring life's challenges.`,
+        actions: [
+          "Global Wellness Ambassador: Author of wellness bestsellers and creator of the Shilpa Shetty Yoga App.",
+          "Anti-Bullying & Cultural Harmony: Won Celebrity Big Brother UK, praised globally for handling prejudice with poise.",
+          "Entrepreneurial Trailblazer: Successful ventures in hospitality, fitness apps, and conscious consumer brands."
+        ],
+        movies: [
+          { name: "Dhadkan", role: "Anjali", year: "2000", note: "Evergreen romantic blockbuster performance cementing her legendary status." },
+          { name: "Life in a... Metro", role: "Shikha", year: "2007", note: "Critically acclaimed portrayal of marital conflict and emotional dilemma." },
+          { name: "Phir Milenge", role: "Tamanna Sahani", year: "2004", note: "Landmark performance playing an HIV-positive professional fighting workplace bias." },
+          { name: "Baazigar", role: "Seema Chopra", year: "1993", note: "Iconic debut thriller alongside Shah Rukh Khan." }
+        ],
+        thoughts: [
+          "Yoga is not just exercise; it is a dialogue between your body and your highest consciousness.",
+          "Grace under pressure is the sweetest response to toxicity.",
+          "Invest in your health today; it is the only house you are guaranteed to live in forever."
+        ]
+      },
+      {
+        id: 'kajal-aggarwal',
+        name: 'Kajal Aggarwal',
+        category: 'South',
+        title: 'The Jewel of South & Pan-Indian Queen',
+        origin: 'Telugu, Tamil & Hindi Cinema Star',
+        image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+        quote: "Versatility is an actor's true Currency. Learn every language, respect every culture.",
+        shortBio: "A powerhouse with over 50 films across Telugu, Tamil, and Hindi cinema, Kajal Aggarwal is one of South India's most commercially viable and artistically reliable screen queens.",
+        philosophy: `Kajal Aggarwal believes in cross-cultural artistic fluidity, professional punctuality, and warmth toward her audience. Crossing linguistic boundaries early in her career, she mastered Telugu and Tamil, proving that art transcends geography. Her philosophy emphasizes humble devotion to craft, maintaining family grounding, and continuously learning from both massive blockbusters and intimate character studies.`,
+        actions: [
+          "Pan-Indian Cinema Pioneer: Bridged North and South Indian film industries before the modern pan-Indian era.",
+          "Child Healthcare Supporter: Sponsors pediatric surgeries and education for underprivileged youth in South India.",
+          "Madame Tussauds Pioneer: First South Indian actress to be honored with a wax statue at Madame Tussauds Singapore."
+        ],
+        movies: [
+          { name: "Magadheera", role: "Mithravinda / Indu", year: "2009", note: "SS Rajamouli epic fantasy blockbuster that established her as a mega star." },
+          { name: "Singham", role: "Kavya Bhosle", year: "2011", note: "Massive Hindi box office success opposite Ajay Devgn." },
+          { name: "Thuppakki", role: "Nisha", year: "2012", note: "Blockbuster Tamil action thriller alongside Thalapathy Vijay." },
+          { name: "Awe!", role: "Kali", year: "2018", note: "Critically acclaimed psychological thriller performance showcasing intense range." }
+        ],
+        thoughts: [
+          "Language is never a barrier when your emotion is genuine.",
+          "Success is meaningful only when shared with those who stood by you in silence.",
+          "Never underestimate the power of consistent, disciplined daily effort."
+        ]
+      },
+      {
+        id: 'parno-mitra',
+        name: 'Parno Mitra',
+        category: 'Bengali',
+        title: 'The Neo-Wave Rebel & Indie Powerhouse',
+        origin: 'Bengali Cinema & Television',
+        image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+        quote: "Real beauty is raw, unfiltered, and unafraid to show its scars.",
+        shortBio: "Breakthrough star of Bengali neo-realism cinema, Parno Mitra is celebrated for her gritty, naturalistic performances, sharp intellect, and bold choices on and off screen.",
+        philosophy: `Parno Mitra's philosophy champions realism, raw honesty, and social transparency. She rejects glossy artificial perfection, choosing instead to portray women with real flaws, sharp intelligence, and emotional grit. She advocates for mental health openness, female agency in regional media, and living life without asking permission from societal stereotypes.`,
+        actions: [
+          "Neo-Realism Pioneer: Key actor in Bengal's modern urban cinema revolution with director Anjan Dutt.",
+          "Mental Health Awareness: Openly advocates for clinical depression awareness and therapy normalization.",
+          "Social & Civic Engagement: Active voice in regional civic reforms and gender equality campaigns."
+        ],
+        movies: [
+          { name: "Ranjana Ami Ar Ashbona", role: "Ranjana", year: "2011", note: "National Award winning film debut that redefined contemporary Bengali cinema." },
+          { name: "Chotushkone", role: "Sree", year: "2014", note: "Srijit Mukherji thriller masterpiece exploring filmmaking and revenge." },
+          { name: "Apur Panchali", role: "Ashima", year: "2013", note: "Biographical drama based on Subir Banerjee (Satyajit Ray's Apu)." },
+          { name: "Rajkahini", role: "Suromi", year: "2015", note: "Hard-hitting partition drama directed by Srijit Mukherji." }
+        ],
+        thoughts: [
+          "Imperfection is where real human beauty hides.",
+          "Speak your truth even if your voice shakes.",
+          "Cinema should disturb the comfortable and comfort the disturbed."
+        ]
+      },
+      {
+        id: 'aishwarya-rai',
+        name: 'Aishwarya Rai Bachchan',
+        category: 'Bollywood',
+        title: 'The Global Sovereign & Eternal Muse',
+        origin: 'Miss World 1994 / Global Icon',
+        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+        poster: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
+        quote: "God has given me this life, and I intend to live it with dignity and gratitude.",
+        shortBio: "Often hailed as the most beautiful woman in the world, Miss World 1994 Aishwarya Rai Bachchan represents the pinnacle of Indian global stardom, fine art, and poise.",
+        philosophy: `Aishwarya Rai's core philosophy centers on royal poise, family grounding, and global representation. Navigating intense global scrutiny for decades, she maintains an unblemished record of grace, quiet strength, and commitment to maternal values. She believes that true beauty is a spiritual responsibility—to represent one's nation with elegance, humility, and unwavering pride in Indian heritage.`,
+        actions: [
+          "UNAIDS Goodwill Ambassador: Global advocate for preventing mother-to-child HIV transmission.",
+          "Eye Donation Vanguard: Pledged her eyes to the Eye Bank Association of India, inspiring millions.",
+          "Global Cannes Pioneer: First Indian actress on the Cannes Jury, paving the way for South Asian representation."
+        ],
+        movies: [
+          { name: "Devdas", role: "Parvati 'Paro'", year: "2002", note: "Screened at Cannes; defined iconic Indian romantic tragedy in modern cinema." },
+          { name: "Ponniyin Selvan (1 & 2)", role: "Nandini", year: "2022 - 2023", note: "Mani Ratnam's magnum opus showcasing her extraordinary regal complexity." },
+          { name: "Hum Dil De Chuke Sanam", role: "Nandini", year: "1999", note: "Filmfare Best Actress winner establishing her absolute superstardom." },
+          { name: "Jodhaa Akbar", role: "Rajkumari Jodhaa Bai", year: "2008", note: "Regal historical performance opposite Hrithik Roshan." }
+        ],
+        thoughts: [
+          "Beauty is subjective, but your grace and values are absolute choices.",
+          "Motherhood completely reshapes your priorities in the most sacred way.",
+          "Representing India on global stages is a sacred honor I carry with reverence."
+        ]
+      }
+    ];
+
+    let currentCategory = 'all';
+
+    // Render Cards in Grid
+    function renderCards(filterText = '') {
+      const grid = document.getElementById('actressGrid');
+      grid.innerHTML = '';
+
+      const filtered = goddesses.filter(g => {
+        const matchesCategory = currentCategory === 'all' || g.category === currentCategory;
+        const matchesSearch = g.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                              g.title.toLowerCase().includes(filterText.toLowerCase()) ||
+                              g.quote.toLowerCase().includes(filterText.toLowerCase()) ||
+                              g.philosophy.toLowerCase().includes(filterText.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if(filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400 glass-panel rounded-3xl">
+            <i class="fa-solid fa-sparkles text-4xl text-amber-500 mb-4 block"></i>
+            <p class="text-xl font-cinzel text-slate-200">No divine feature matching your search.</p>
+            <p class="text-sm text-slate-500 mt-2">Try adjusting your filters or search keywords.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((goddess) => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-3xl overflow-hidden flex flex-col justify-between relative group';
+        card.innerHTML = `
+          <!-- Image Header with Overlay -->
+          <div class="relative h-80 overflow-hidden">
+            <img src="${goddess.image}" alt="${goddess.name}" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+            
+            <!-- Category Tag -->
+            <span class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-amber-400 border border-amber-500/30 text-xs px-3 py-1 rounded-full font-semibold">
+              ${goddess.category} Cinema
+            </span>
+
+            <!-- Bottom Image Info -->
+            <div class="absolute bottom-4 left-4 right-4">
+              <span class="text-xs text-amber-300 font-cinzel uppercase tracking-wider block">${goddess.origin}</span>
+              <h3 class="text-2xl font-bold font-cinzel text-slate-100 group-hover:text-amber-400 transition-colors">${goddess.name}</h3>
+            </div>
+          </div>
+
+          <!-- Body Content -->
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">${goddess.title}</p>
+              <p class="text-slate-300 text-sm line-clamp-3 leading-relaxed font-light">${goddess.shortBio}</p>
+            </div>
+
+            <!-- Quote Snippet -->
+            <div class="p-3 rounded-xl bg-slate-900/50 border border-slate-800 text-xs text-amber-200/90 italic font-serif">
+              "${goddess.quote}"
+            </div>
+
+            <!-- Detailed Action Trigger Button -->
+            <button onclick="openModal('${goddess.id}')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-transparent hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-slate-950 font-bold text-sm tracking-wider uppercase transition-all duration-300 border border-amber-500/30 flex items-center justify-center gap-2 group/btn shadow-md">
+              <span>View Detailed Feature</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover/btn:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Category Filtering
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-amber-500', 'text-slate-950', 'font-bold');
+        btn.classList.add('bg-slate-800/80', 'text-slate-200');
+      });
+
+      event.target.classList.remove('bg-slate-800/80', 'text-slate-200');
+      event.target.classList.add('bg-amber-500', 'text-slate-950', 'font-bold');
+
+      renderCards(document.getElementById('searchInput').value);
+    }
+
+    // Search Input Listener
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      renderCards(e.target.value);
+    });
+
+    // Open Deep Feature Modal
+    function openModal(id) {
+      const goddess = goddesses.find(g => g.id === id);
+      if(!goddess) return;
+
+      const modal = document.getElementById('detailModal');
+      const modalContent = document.getElementById('modalContent');
+
+      modalContent.innerHTML = `
+        <!-- Hero Header inside Modal -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center bg-slate-900/80 p-6 rounded-2xl border border-slate-800">
+          <div class="relative h-72 rounded-xl overflow-hidden md:col-span-1 shadow-lg">
+            <img src="${goddess.image}" alt="${goddess.name}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 bg-amber-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full">
+              ${goddess.category} Icon
+            </div>
+          </div>
+          
+          <div class="md:col-span-2 space-y-4">
+            <div>
+              <span class="text-xs text-amber-400 font-cinzel uppercase tracking-widest block">${goddess.origin}</span>
+              <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-100">${goddess.name}</h2>
+              <p class="text-amber-300/80 text-sm font-semibold">${goddess.title}</p>
+            </div>
+            
+            <p class="text-slate-300 text-sm leading-relaxed">${goddess.shortBio}</p>
+
+            <div class="p-4 rounded-xl bg-slate-950/70 border-l-4 border-amber-500 text-amber-200 italic font-serif text-sm">
+              "${goddess.quote}"
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabbed Navigation inside Feature -->
+        <div class="flex border-b border-slate-800 gap-4 overflow-x-auto text-sm font-cinzel">
+          <button onclick="switchTab('tab-philosophy')" id="btn-tab-philosophy" class="tab-btn pb-3 text-amber-400 border-b-2 border-amber-500 font-bold">Divine Philosophy</button>
+          <button onclick="switchTab('tab-movies')" id="btn-tab-movies" class="tab-btn pb-3 text-slate-400 hover:text-slate-200">Iconic Works & Posters</button>
+          <button onclick="switchTab('tab-actions')" id="btn-tab-actions" class="tab-btn pb-3 text-slate-400 hover:text-slate-200">Actions & Philanthropy</button>
+          <button onclick="switchTab('tab-thoughts')" id="btn-tab-thoughts" class="tab-btn pb-3 text-slate-400 hover:text-slate-200">Noble Thoughts</button>
+        </div>
+
+        <!-- Tab 1: Philosophy -->
+        <div id="tab-philosophy" class="tab-content space-y-4">
+          <h3 class="text-xl font-cinzel font-bold text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-feather-pointed"></i> Philosophical Vision & Worldview
+          </h3>
+          <p class="text-slate-300 leading-relaxed text-sm sm:text-base bg-slate-900/40 p-6 rounded-2xl border border-slate-800/80 font-light">
+            ${goddess.philosophy}
+          </p>
+        </div>
+
+        <!-- Tab 2: Movies & Poster Showcase -->
+        <div id="tab-movies" class="tab-content hidden space-y-4">
+          <h3 class="text-xl font-cinzel font-bold text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-film"></i> Masterpiece Filmography & Poster Showcase
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            ${goddess.movies.map(m => `
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 transition-colors flex gap-4 items-center">
+                <div class="w-16 h-20 bg-slate-800 rounded-lg overflow-hidden flex-shrink-0 relative">
+                  <img src="${goddess.poster}" alt="Poster" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-100 text-base">${m.name}</h4>
+                  <p class="text-xs text-amber-400 font-medium">Role: ${m.role} (${m.year})</p>
+                  <p class="text-xs text-slate-400 mt-1">${m.note}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Tab 3: Actions & Philanthropy -->
+        <div id="tab-actions" class="tab-content hidden space-y-4">
+          <h3 class="text-xl font-cinzel font-bold text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-hand-holding-heart"></i> Impactful Actions & Philanthropy
+          </h3>
+          <div class="space-y-3">
+            ${goddess.actions.map(act => `
+              <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800 flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-1"></i>
+                <p class="text-slate-300 text-sm leading-relaxed">${act}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Tab 4: Noble Thoughts -->
+        <div id="tab-thoughts" class="tab-content hidden space-y-4">
+          <h3 class="text-xl font-cinzel font-bold text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-quote-left"></i> Words of Wisdom & Noble Thoughts
+          </h3>
+          <div class="grid grid-cols-1 gap-4">
+            ${goddess.thoughts.map(thought => `
+              <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 border border-amber-500/20 text-slate-200 text-sm italic font-serif flex items-center gap-4 shadow-md">
+                <i class="fa-solid fa-quote-left text-2xl text-amber-500/40"></i>
+                <span>"${thought}"</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close Modal
+    function closeModal() {
+      const modal = document.getElementById('detailModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Modal Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(tb => {
+        tb.classList.remove('text-amber-400', 'border-b-2', 'border-amber-500', 'font-bold');
+        tb.classList.add('text-slate-400');
+      });
+
+      document.getElementById(tabId).classList.remove('hidden');
+      document.getElementById('btn-' + tabId).classList.remove('text-slate-400');
+      document.getElementById('btn-' + tabId).classList.add('text-amber-400', 'border-b-2', 'border-amber-500', 'font-bold');
+    }
+
+    // Close Modal on clicking backdrop
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('detailModal');
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Initialize Grid on Load
+    window.onload = function() {
+      renderCards();
+    };
+  </script>
+</body>
+</html>
